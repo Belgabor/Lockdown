@@ -8,8 +8,8 @@ import adubbz.lockdown.gui.GuiCreateFixedWorld;
 import adubbz.lockdown.gui.GuiNonMultiplayerMainMenu;
 import adubbz.lockdown.Lockdown;
 import adubbz.lockdown.util.LDObfuscationHelper;
-import cpw.mods.fml.common.ObfuscationReflectionHelper;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class WorldCreationEventHandler 
 {

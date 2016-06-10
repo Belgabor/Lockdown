@@ -171,7 +171,11 @@ public class GuiCreateFixedWorld extends GuiCreateWorld
         }
         else
         {
+            try {
             super.actionPerformed(guiButton);
+            } catch (IOException e) {
+                LDLogger.log(Level.ERROR, "Action couldn't be performed ",e);
+            }
         }
     }
 }
