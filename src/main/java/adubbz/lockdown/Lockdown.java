@@ -36,6 +36,7 @@ public class Lockdown
     	
     	try
     	{
+            FMLLog.log(Level.INFO, "Lockdown is configuring itself");
     		config.load();
     		
     		templateDirectory = config.get("World Creation", "World Template Directory", "template").getString();
