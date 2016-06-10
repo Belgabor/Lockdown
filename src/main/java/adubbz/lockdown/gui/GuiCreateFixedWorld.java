@@ -1,12 +1,9 @@
 package adubbz.lockdown.gui;
 
-import java.io.*;
-import java.lang.reflect.Field;
-import java.util.Map;
-import java.util.Random;
-
-import com.google.common.collect.Maps;
-import cpw.mods.fml.common.*;
+import adubbz.lockdown.Lockdown;
+import adubbz.lockdown.util.LDLogger;
+import adubbz.lockdown.util.LDObfuscationHelper;
+import cpw.mods.fml.common.ObfuscationReflectionHelper;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiCreateWorld;
 import net.minecraft.client.gui.GuiScreen;
@@ -15,18 +12,12 @@ import net.minecraft.nbt.*;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.WorldSettings;
 import net.minecraft.world.WorldType;
-import net.minecraft.world.chunk.storage.AnvilSaveConverter;
 import net.minecraft.world.storage.ISaveFormat;
-
-import net.minecraft.world.storage.ISaveHandler;
-import net.minecraft.world.storage.SaveHandler;
-import net.minecraft.world.storage.WorldInfo;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.Level;
 
-import adubbz.lockdown.Lockdown;
-import adubbz.lockdown.util.LDLogger;
-import adubbz.lockdown.util.LDObfuscationHelper;
+import java.io.*;
+import java.util.Random;
 
 public class GuiCreateFixedWorld extends GuiCreateWorld
 {
@@ -171,11 +162,7 @@ public class GuiCreateFixedWorld extends GuiCreateWorld
         }
         else
         {
-            try {
             super.actionPerformed(guiButton);
-            } catch (IOException e) {
-                LDLogger.log(Level.ERROR, "Action couldn't be performed ",e);
-            }
         }
     }
 }
