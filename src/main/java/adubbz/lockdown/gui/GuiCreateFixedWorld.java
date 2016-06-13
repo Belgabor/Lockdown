@@ -92,8 +92,9 @@ public class GuiCreateFixedWorld extends GuiCreateWorld
                 GuiTextField seedTextField = ObfuscationReflectionHelper.getPrivateValue(GuiCreateWorld.class, this, "field_146335_h");
                 String gameModeName = ObfuscationReflectionHelper.getPrivateValue(GuiCreateWorld.class, this, "field_146342_r");
                 boolean generateStructures = ObfuscationReflectionHelper.getPrivateValue(GuiCreateWorld.class, this, "field_146341_s");
-                boolean bonusChest = ObfuscationReflectionHelper.getPrivateValue(GuiCreateWorld.class, this, "field_146337_w");
-                boolean commandsAllowed = ObfuscationReflectionHelper.getPrivateValue(GuiCreateWorld.class, this, "field_146344_y");
+                boolean bonusChest = ObfuscationReflectionHelper.getPrivateValue(GuiCreateWorld.class, this, "field_146338_v");
+                //boolean commandsAllowed = ObfuscationReflectionHelper.getPrivateValue(GuiCreateWorld.class, this, "field_146344_y");
+                boolean commandsAllowed = ObfuscationReflectionHelper.getPrivateValue(GuiCreateWorld.class, this, "field_146340_t");
                 int terrainType = ObfuscationReflectionHelper.getPrivateValue(GuiCreateWorld.class, this, "field_146331_K");
 
                 long defaultSeed = (new Random()).nextLong();
@@ -133,10 +134,15 @@ public class GuiCreateFixedWorld extends GuiCreateWorld
                 dataSection.setTag("generatorName", new NBTTagString(WorldType.worldTypes[terrainType].getWorldTypeName()));
                 //dataSection.setTag("generatorOptions", new NBTTagString(TODO: World generator options));
                 dataSection.setTag("RandomSeed", new NBTTagLong(defaultSeed));
-                dataSection.setTag("generateStructures", new NBTTagByte((byte) (generateStructures ? 1 : 0)));
+                dataSection.setTag("MapFeatures", new NBTTagByte((byte) (generateStructures ? 1 : 0)));
+                dataSection.setLong("Time", 0);
+                dataSection.setLong("DayTime", 0);
+                dataSection.setByte("raining", (byte) 0);
+                dataSection.setByte("thundering", (byte) 0);
 
                 WorldSettings.GameType gametype = WorldSettings.GameType.getByName(gameModeName);
-                dataSection.setTag("gameType", new NBTTagInt(gametype.getID()));
+                dataSection.setTag("GameType", new NBTTagInt(gametype.getID()));
+                dataSection.setByte("hardcore", (byte) (gameModeName.equals("hardcore")?1:0));
                 levelDat.setTag("Data", dataSection);
 
                 try {
